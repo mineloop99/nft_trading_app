@@ -11,7 +11,7 @@ dotenv: .env
 networks:
   default: development
   development:
-    verify: False
+    verify: True
     recipient: "0x35Af6B31a61eC9F030849a3953394A69a1f9f9eC"
   rinkeby:
     verify: True

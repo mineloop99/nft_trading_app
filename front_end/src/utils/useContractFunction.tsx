@@ -9,9 +9,10 @@ import {
   TransactionStatus,
 } from "./transaction/transaction";
 import { useTransactionsContext } from "./transaction/context";
+import config from "../config.json";
 
 declare let window: any;
-const rinkebyId: number = 4;
+const chainId: number = config.rinkeby ? 4 : 1337;
 
 export function connectContractToSigner(
   contract: Contract,
@@ -51,10 +52,7 @@ export function useContractFunction(
   options?: TransactionOptions
 ) {
   const [events, setEvents] = useState<LogDescription[] | undefined>(undefined);
-  const { promiseTransaction, state } = usePromiseTransaction(
-    rinkebyId,
-    options
-  );
+  const { promiseTransaction, state } = usePromiseTransaction(chainId, options);
 
   const send = useCallback(
     async (...args: any[]) => {

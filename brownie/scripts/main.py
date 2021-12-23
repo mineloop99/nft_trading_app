@@ -19,6 +19,6 @@ def market_deploy():
 
 
 def main():
-    nft_token_deploy()
-    market_deploy()
+    # nft_token_deploy()
+    # market_deploy()
     update_front_end()

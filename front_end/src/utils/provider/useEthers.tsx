@@ -47,7 +47,6 @@ export function useEthers() {
     setState(account);
   });
   window.ethereum.on("chainChanged", function (chainId: string) {
-    console.log("Chain ID:", chainId === "0x61");
     setState(chainId);
   });
   return { handleConnect, state, account };

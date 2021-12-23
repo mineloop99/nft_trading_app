@@ -5,6 +5,7 @@ import Market from "../../chain-info/contracts/Market.json";
 import Nft from "../../chain-info/contracts/Nft.json";
 import { Contract } from "@ethersproject/contracts";
 import networkMapping from "../../chain-info/deployments/map.json";
+import config from "../../config.json";
 
 export const useListToken = (nftContractAddress: string) => {
   const { account } = useEthers();
@@ -13,7 +14,8 @@ export const useListToken = (nftContractAddress: string) => {
   // chainId
   const abi = Market.abi;
   const marketInterface = new utils.Interface(abi);
-  const marketAddress = networkMapping["4"]["Market"][0];
+  const marketAddress =
+    networkMapping[config.rinkeby ? "4" : "1337"]["Market"][0];
   const marketContract = new Contract(marketAddress, marketInterface);
 
   const nftAbi = Nft.abi;

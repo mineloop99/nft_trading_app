@@ -1,0 +1,18 @@
+{
+  "contracts": {
+    "Market": "1f209561a56d7614ef8bcb1ddd8ede9237c74347",
+    "Nft": "f3f4c0e6987ace7bce33173b8726cb35b7c2d489",
+    "OpenZeppelin/openzeppelin-contracts@4.3.0/ERC721": "54651246d3f6853bbc0fe2d3af475b0ea228dbf5",
+    "OpenZeppelin/openzeppelin-contracts@4.3.0/Strings": "1ce946f6a4eaa185320328620ccf999b9e86db7c"
+  },
+  "tests": {
+    "tests/test_contract.py": {
+      "coverage": false,
+      "isolated": false,
+      "results": "..",
+      "sha1": "e34ee1b531cedb478054909078b8bab8d849769a",
+      "txhash": []
+    }
+  },
+  "tx": {}
+}

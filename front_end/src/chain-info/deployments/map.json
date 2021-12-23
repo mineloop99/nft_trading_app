@@ -1,4 +1,12 @@
 {
+  "1337": {
+    "Market": [
+      "0xff322315bCba585ae58678788Fa47b9E53e641eA"
+    ],
+    "Nft": [
+      "0x461932D0CeC6941eF903614766dd7cFa9d39A7d1"
+    ]
+  },
   "4": {
     "Market": [
       "0x6F872d631B7FA7cc52b769C510e9799F01e5D8bC"

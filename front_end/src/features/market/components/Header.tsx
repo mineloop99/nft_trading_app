@@ -2,14 +2,11 @@ import { Button } from "@mui/material";
 import { useEthers } from "../../../utils";
 
 export const Header: React.FC = () => {
-  const { handleConnect, state, account } = useEthers();
+  const { handleConnect, account } = useEthers();
 
-  console.log("Account:", state);
   return (
     <>
-      {account === undefined ? (
-        <></>
-      ) : account.isConnected && account !== null ? (
+      {account !== undefined ? (
         <></>
       ) : (
         <Button onClick={handleConnect} color="primary" variant="contained">

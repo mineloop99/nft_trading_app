@@ -9,7 +9,7 @@ contract Nft is ERC721 {
     }
 
     NftProps[] public nftItems;
-    uint256 tokenCounter;
+    uint256 public tokenCounter;
     event requestedNft(uint256 indexed requestId, address requester);
 
     constructor() ERC721("New Nft", "MineLoop") {
