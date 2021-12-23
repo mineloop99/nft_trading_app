@@ -3,6 +3,9 @@ import { Header, ListForm, MintForm, NftShow } from "./components";
 import config from "../../config.json";
 export const Market: React.FC = () => {
   const tokenAddress = networkMapping[config.rinkeby ? "4" : "1337"]["Nft"][0];
+  const marketAddress =
+    networkMapping[config.rinkeby ? "4" : "1337"]["Market"][0];
+
   return (
     <>
       <Header />
@@ -11,7 +14,7 @@ export const Market: React.FC = () => {
       <h2>List Token!</h2>
       <ListForm tokenAddress={tokenAddress} />
       <h2>Token Show!</h2>
-      <NftShow tokenAddress={tokenAddress} />
+      <NftShow tokenAddress={tokenAddress} marketAddress={marketAddress} />
     </>
   );
 };
