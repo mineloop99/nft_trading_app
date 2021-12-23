@@ -48,7 +48,7 @@ def test_nft_token_contract_advanced():
 
 
 @pytest.mark.third
-def test_nft_token_contract_advanced():
+def test_nft_token_contract_expert():
     # Deploy Token
     account = get_account()
     account2 = accounts[1]
