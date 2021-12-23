@@ -12,9 +12,16 @@
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
     "strict": true,                                      /* Enable all strict type-checking options. */
-    "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true
+  },                        
     "included": [
-    "src/**/*.tsx"
-    ]
-  }
+    "**/*.tsx"
+    ],
+  "scripts": {
+    "start": "react-scripts start src/index.tsx",
+    "build": "react-scripts build && rm -rf ../server/client/build && mv build ../server/client/build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "watch": "tsc -p . -w"
+  },
 }

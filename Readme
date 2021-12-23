@@ -1,8 +1,27 @@
-// Brownie Folder contain all contracts and python testing contracts
+// Brownie Folder contain all contracts interaction and testing using python
+python version: 3.9.9
+
+// Interact Brownie Folder
+-$ cd brownie
+
+// Testing Development Command: Ganache CLI Only
+-$ brownie test
+
+// Testing Rinkeby Testnet Command:
+-$ brownie test --network rinkeby
+
+// Deploy Mainet command:
+-$ brownie run main.py --network rinkeby
 
 - Please rename "./brownie/RenameToEnv to .env file and fix several lines unless you do not want to interact with testing contract
 
 // front_end Folder contain all web application being run for User Interface
+
 - node version: v16.13.0
 - npm version: 8.2.0
 
+// Npm install package Command:
+-$ npm i
+
+// Front end run:
+-$ npm start
