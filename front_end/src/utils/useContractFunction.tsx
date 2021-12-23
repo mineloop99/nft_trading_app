@@ -11,6 +11,8 @@ import {
 import { useTransactionsContext } from "./transaction/context";
 
 declare let window: any;
+const rinkebyId: number = 4;
+
 export function connectContractToSigner(
   contract: Contract,
   options?: TransactionOptions,
@@ -49,7 +51,10 @@ export function useContractFunction(
   options?: TransactionOptions
 ) {
   const [events, setEvents] = useState<LogDescription[] | undefined>(undefined);
-  const { promiseTransaction, state } = usePromiseTransaction(97, options);
+  const { promiseTransaction, state } = usePromiseTransaction(
+    rinkebyId,
+    options
+  );
 
   const send = useCallback(
     async (...args: any[]) => {
@@ -94,7 +99,12 @@ export function usePromiseTransaction(
       try {
         transaction = await transactionPromise;
 
-        setState({ transaction, status: "Mining", chainId });
+        setState({
+          transaction,
+          status: "Mining",
+          chainId,
+          transactionName: options?.transactionName,
+        });
         addTransaction({
           transaction: {
             ...transaction,
@@ -103,9 +113,26 @@ export function usePromiseTransaction(
           submittedAt: Date.now(),
           transactionName: options?.transactionName,
         });
-        const receipt = await transaction.wait();
-        setState({ receipt, transaction, status: "Success", chainId });
-        return receipt;
+        if (typeof transaction !== "object") {
+          setState({
+            receipt: undefined,
+            transaction: transaction,
+            status: "Success",
+            transactionName: options?.transactionName,
+            chainId: chainId,
+          });
+          return transaction;
+        } else {
+          const receipt = await transaction.wait();
+          setState({
+            receipt,
+            transaction,
+            transactionName: options?.transactionName,
+            status: "Success",
+            chainId,
+          });
+          return receipt;
+        }
       } catch (e: any) {
         const errorMessage =
           e.error?.message ?? e.reason ?? e.data?.message ?? e.message;
@@ -122,6 +149,7 @@ export function usePromiseTransaction(
               originalTransaction: transaction,
               receipt: e.receipt,
               errorMessage,
+              transactionName: options?.transactionName,
               chainId,
             });
           } else {
@@ -129,12 +157,18 @@ export function usePromiseTransaction(
               status: "Fail",
               transaction,
               receipt: e.receipt,
+              transactionName: options?.transactionName,
               errorMessage,
               chainId,
             });
           }
         } else {
-          setState({ status: "Exception", errorMessage, chainId });
+          setState({
+            status: "Exception",
+            errorMessage,
+            chainId,
+            transactionName: options?.transactionName,
+          });
         }
         return undefined;
       }

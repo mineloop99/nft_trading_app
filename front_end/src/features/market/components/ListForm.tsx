@@ -53,33 +53,30 @@ export const ListForm: React.FC<{
     setShowListTokenError(false);
   };
 
-  // useEffect(() => {
-  //   try {
-  //     if (
-  //       notifications.filter(
-  //         (notification) =>
-  //           notification.type === "transactionSucceed" &&
-  //           notification.transactionName === "Approve Nft transfer"
-  //       ).length > 0
-  //     ) {
-  //       setShowNftApprovalSuccess(true);
-  //       setShowListTokenSuccess(false);
-  //     }
-  //     if (!isMining) {
-  //       setShowListTokenError(true);
-  //     }
-  //     if (
-  //       notifications.filter(
-  //         (notification) =>
-  //           notification.type === "transactionSucceed" &&
-  //           notification.transactionName === "List Token"
-  //       ).length > 0
-  //     ) {
-  //       setShowNftApprovalSuccess(false);
-  //       setShowListTokenSuccess(true);
-  //     }
-  //   } catch {}
-  // }, [notifications, isMining]);
+  useEffect(() => {
+    try {
+      if (
+        approveAndListState.transactionName === "Approve Nft transfer" &&
+        approveAndListState.status === "Success"
+      ) {
+        setShowNftApprovalSuccess(true);
+        setShowListTokenSuccess(false);
+      }
+      if (
+        approveAndListState.transactionName === "List Token" &&
+        approveAndListState.status === "Success"
+      ) {
+        setShowNftApprovalSuccess(false);
+        setShowListTokenSuccess(true);
+      }
+      if (
+        approveAndListState.status === "Fail" ||
+        approveAndListState.status === "Exception"
+      ) {
+        setShowListTokenError(true);
+      }
+    } catch {}
+  }, [approveAndListState]);
   return (
     <>
       <div>
@@ -126,7 +123,7 @@ export const ListForm: React.FC<{
       ) : (
         <Snackbar
           open={showListTokenError}
-          autoHideDuration={5000}
+          autoHideDuration={4000}
           onClose={handleCloseSnack}
         >
           <Alert onClose={handleCloseSnack} severity="error">

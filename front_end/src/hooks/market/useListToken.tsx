@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { useContractFunction } from "../../utils";
-import { constants, utils } from "ethers";
+import { useContractFunction, useEthers } from "../../utils";
+import { utils } from "ethers";
 import Market from "../../chain-info/contracts/Market.json";
 import Nft from "../../chain-info/contracts/Nft.json";
 import { Contract } from "@ethersproject/contracts";
 import networkMapping from "../../chain-info/deployments/map.json";
 
-declare let window: any;
 export const useListToken = (nftContractAddress: string) => {
+  const { account } = useEthers();
   // address
   // abi
   // chainId
@@ -41,34 +41,21 @@ export const useListToken = (nftContractAddress: string) => {
 
   // Execute
   const approveAndList = async (tokenId: string, price: string) => {
-    //await checkApprovalSend(account, marketAddress);
+    if (account !== undefined) {
+      await checkApprovalSend(account.address, marketAddress);
+    }
+    if (
+      checkApprovalState.status === "Success" &&
+      !checkApprovalState.transaction
+    ) {
+      await approveNftSend(marketAddress, "true");
+    }
     setPriceToList([tokenId, price]);
-    try {
-      if (
-        checkApprovalState.status === "Success" &&
-        !checkApprovalState.transaction
-      ) {
-        return approveNftSend(marketAddress, "true");
-      }
-    } catch {}
   };
   //useEffect
   useEffect(() => {
-    try {
-      if (
-        approveAndListNftState.status === "Success" ||
-        checkApprovalState.transaction
-      ) {
-        listTokenSend(nftContractAddress, priceToList[0], priceToList[1]);
-      }
-    } catch {}
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    approveAndListNftState,
-    priceToList,
-    nftContractAddress,
-    checkApprovalState.transaction,
-  ]);
+    listTokenSend(nftContractAddress, priceToList[0], priceToList[1]);
+  }, [priceToList]);
 
   const [state, setState] = useState(approveAndListNftState);
 
@@ -83,7 +70,6 @@ export const useListToken = (nftContractAddress: string) => {
         setState(approveAndListNftState);
       }
     } catch {}
-  }, [approveAndListNftState, checkApprovalState.transaction, listTokenState]);
-
+  }, [approveAndListNftState, checkApprovalState, listTokenState]);
   return { approveAndList, state };
 };
