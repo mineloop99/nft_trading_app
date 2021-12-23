@@ -6,12 +6,35 @@
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.2.5",
     "@types/react-dom": "^17.0.11",
-    "ethers": "^5.5.2"
+    "ethers": "^5.5.2",
+    "react": "^17.0.2",
+    "react-alert": "^7.0.3",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^5.0.0"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "scripts": {
+    "start": "react-scripts start src/index.tsx",
+    "build": "react-scripts build && rm -rf ../server/client/build && mv build ../server/client/build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "watch": "tsc -p . -w"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   }
 }
