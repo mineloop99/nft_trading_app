@@ -3,7 +3,6 @@ from brownie import Nft, Market
 import yaml
 import json
 import shutil
-from scripts.helper import get_account
 
 
 def deploy_nft(account):

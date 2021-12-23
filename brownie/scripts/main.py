@@ -1,4 +1,4 @@
-from scripts.deploy_token import deploy_nft, deploy_market, update_front_end
+from scripts.deploy_nft import deploy_nft, deploy_market, update_front_end
 from scripts.helper import get_account
 
 
