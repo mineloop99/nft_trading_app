@@ -1,0 +1,3 @@
+{
+    "getStorage":"https://testnets-api.opensea.io/api/v1/assets?owner=${address}"
+}

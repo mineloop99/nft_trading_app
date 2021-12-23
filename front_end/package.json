@@ -1,0 +1,16 @@
+{
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "@emotion/styled": "^11.6.0",
+    "@mui/material": "^5.2.5",
+    "ethers": "^5.5.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  }
+}
