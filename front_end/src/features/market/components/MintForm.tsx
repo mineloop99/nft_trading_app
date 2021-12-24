@@ -53,7 +53,11 @@ export const MintForm: React.FC<{
             color="primary"
             size="large"
           >
-            {isMining ? <CircularProgress size={26} /> : "Mint Token!"}
+            {isMining ? (
+              <CircularProgress color="secondary" size={26} />
+            ) : (
+              "Mint Token!"
+            )}
           </Button>
         </div>
       </div>

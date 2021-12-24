@@ -53,7 +53,11 @@ export const BuyNftForm: React.FC<{
             color="primary"
             size="large"
           >
-            {isMining ? <CircularProgress size={26} /> : "Buy Token!"}
+            {isMining ? (
+              <CircularProgress color="secondary" size={26} />
+            ) : (
+              "Buy Token!"
+            )}
           </Button>
         </div>
       </div>

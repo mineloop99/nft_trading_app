@@ -44,7 +44,7 @@ export const useStakeToken = (nftContractAddress: string) => {
     stakingContract,
     "leaveStaking",
     {
-      transactionName: "Un stake Nft Token",
+      transactionName: "Unstake Nft Token",
     }
   );
   const unstake = () => {

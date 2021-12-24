@@ -97,7 +97,11 @@ export const ListForm: React.FC<{
             size="large"
             disabled={isMining}
           >
-            {isMining ? <CircularProgress size={26} /> : "List!!!"}
+            {isMining ? (
+              <CircularProgress color="secondary" size={26} />
+            ) : (
+              "List!!!"
+            )}
           </Button>
         </div>
       </div>

@@ -6,6 +6,7 @@ import {
   NftShow,
   StakingForm,
   BuyNftForm,
+  SendNftForm,
 } from "./components";
 import config from "../../config.json";
 export const Market: React.FC = () => {
@@ -34,6 +35,8 @@ export const Market: React.FC = () => {
           marketAddress={marketAddress}
         />
       </div>
+      <h2>Send Nft to Friend!</h2>
+      <SendNftForm tokenAddress={tokenAddress} />
     </>
   );
 };

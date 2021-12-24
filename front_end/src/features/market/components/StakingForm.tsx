@@ -161,7 +161,11 @@ export const StakingForm: React.FC<{
             size="large"
             disabled={isClaiming}
           >
-            {isClaiming ? <CircularProgress size={26} /> : "Claim Reward!!!"}
+            {isClaiming ? (
+              <CircularProgress color="secondary" size={26} />
+            ) : (
+              "Claim Reward!!!"
+            )}
           </Button>
         </div>
       </div>

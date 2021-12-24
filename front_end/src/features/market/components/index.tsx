@@ -4,3 +4,4 @@ export { Header } from "./Header";
 export { NftShow } from "./NftShow";
 export { StakingForm } from "./StakingForm";
 export { BuyNftForm } from "./BuyNftForm";
+export { SendNftForm } from "./SendNftForm";
