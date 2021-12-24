@@ -88,9 +88,11 @@ export const ListForm: React.FC<{
           <h6>Amount</h6>
           <Input onChange={handleListAmountChange} />
         </div>
+        <br />
         <div>
           <Button
             onClick={handleListSubmit}
+            variant="contained"
             color="primary"
             size="large"
             disabled={isMining}

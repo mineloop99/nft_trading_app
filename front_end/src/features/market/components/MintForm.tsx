@@ -45,8 +45,14 @@ export const MintForm: React.FC<{
           <h6>TokenName</h6>
           <Input onChange={handleInputTokenNameChange} />
         </div>
+        <br />
         <div>
-          <Button onClick={handleMintNftSubmit} color="primary" size="large">
+          <Button
+            onClick={handleMintNftSubmit}
+            variant="contained"
+            color="primary"
+            size="large"
+          >
             {isMining ? <CircularProgress size={26} /> : "Mint Token!"}
           </Button>
         </div>

@@ -12,5 +12,19 @@
     "Staking": [
       "0xdE84335d11825D0fF1527b96A533525a628c1eC4"
     ]
+  },
+  "4": {
+    "Market": [
+      "0x43cc7CBa97FDd2588c0a436681E2C5eF2e50E3B2"
+    ],
+    "Nft": [
+      "0xd683eE1b92a680f07E5DF29EfaA7D7eE45C69754"
+    ],
+    "RewardToken": [
+      "0x83B37db3B42C83c380796Ea892deA6a8c80e2834"
+    ],
+    "Staking": [
+      "0x5f18e5f754b85c0B9ea9Fd4a826a9Ca38DEE0421"
+    ]
   }
 }

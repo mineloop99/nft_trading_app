@@ -23,12 +23,16 @@ export const useBuyNft = (marketContractAddress: string) => {
     }
   );
   const buyNft = (tokenId: string) => {
-    const a = async () => {
-      var result = await checkBuySend();
-      console.log(result);
-    };
-    a();
-    return buyNftSend(tokenId, { value: checkBuyState.transaction });
+    checkBuySend(tokenId);
+    if (
+      checkBuyState.status === "Success" &&
+      checkBuyState.transaction !== undefined
+    ) {
+      let overrides = {
+        value: checkBuyState.transaction.toString(),
+      };
+      buyNftSend(tokenId, overrides);
+    }
   };
 
   return { buyNft, buyNftState };

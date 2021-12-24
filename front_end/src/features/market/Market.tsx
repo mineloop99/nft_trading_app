@@ -20,9 +20,11 @@ export const Market: React.FC = () => {
       <NftShow tokenAddress={tokenAddress} marketAddress={marketAddress} />
       <h2>Mint Token!</h2>
       <MintForm tokenAddress={tokenAddress} />
-      <h2>List Token!</h2>
+      <h1>Market</h1>
       <div>
+        <h3>List NFT!</h3>
         <ListForm tokenAddress={tokenAddress} />
+        <h3>Buy NFT!</h3>
         <BuyNftForm marketAddress={marketAddress} />
       </div>
       <h2>Staking Pool!</h2>

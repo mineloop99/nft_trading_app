@@ -156,6 +156,7 @@ export const StakingForm: React.FC<{
           <tr></tr>
           <Button
             onClick={handleClaimReward}
+            variant="contained"
             color="primary"
             size="large"
             disabled={isClaiming}

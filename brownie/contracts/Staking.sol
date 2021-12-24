@@ -83,6 +83,7 @@ contract Staking is Ownable, Pausable, ReentrancyGuard {
     // Withdraw All Nft tokens from STAKING.
     function leaveStaking() public whenNotPaused {
         UserInfo storage user = userInfo[msg.sender];
+        require(user.nftStaked.length > 0, "Staking: No token was staked!");
         for (
             uint256 nftIndex = 0;
             nftIndex < user.nftStaked.length;

@@ -42,29 +42,37 @@ export const useListToken = (nftContractAddress: string) => {
   const [priceToList, setPriceToList] = useState(["", ""]);
 
   // Execute
-  const approveAndList = async (tokenId: string, price: string) => {
+  const approveAndList = (tokenId: string, price: string) => {
     if (account !== undefined) {
-      await checkApprovalSend(account.address, marketAddress);
+      checkApprovalSend(account.address, marketAddress);
     }
     if (
       checkApprovalState.status === "Success" &&
       !checkApprovalState.transaction
     ) {
-      await approveNftSend(marketAddress, "true");
+      approveNftSend(marketAddress, "true");
     }
-    if (
-      (approveAndListNftState.status === "Success" &&
-        !approveAndListNftState.transaction) ||
-      (checkApprovalState.status === "Success" &&
-        checkApprovalState.transaction)
-    ) {
-      setPriceToList([tokenId, price]);
-    }
+    setPriceToList([tokenId, price.toString()]);
   };
   //useEffect
   useEffect(() => {
+    if (account !== undefined) {
+      checkApprovalSend(account.address, marketAddress);
+    }
+    if (
+      checkApprovalState.status === "Success" &&
+      checkApprovalState.transaction
+    ) {
+      setTokenListState(!tokenListState);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [priceToList]);
+  const [tokenListState, setTokenListState] = useState(false);
+  //useEffect
+  useEffect(() => {
     listTokenSend(nftContractAddress, priceToList[0], priceToList[1]);
-  }, [priceToList, nftContractAddress]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tokenListState]);
 
   const [state, setState] = useState(approveAndListNftState);
 

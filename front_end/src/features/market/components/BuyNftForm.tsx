@@ -45,8 +45,14 @@ export const BuyNftForm: React.FC<{
           <h6>Token Id</h6>
           <Input onChange={handleInputTokenIdChange} />
         </div>
+        <br />
         <div>
-          <Button onClick={handleBuyNftSubmit} color="primary" size="large">
+          <Button
+            onClick={handleBuyNftSubmit}
+            variant="contained"
+            color="primary"
+            size="large"
+          >
             {isMining ? <CircularProgress size={26} /> : "Buy Token!"}
           </Button>
         </div>
