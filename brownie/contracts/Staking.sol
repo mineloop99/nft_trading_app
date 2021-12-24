@@ -40,17 +40,17 @@ contract Staking is Ownable, Pausable, ReentrancyGuard {
     event EmergencyWithdraw(address indexed user, uint256 nftId);
 
     constructor(
-        IERC20 _rewardToken,
-        IERC721 _nftContract,
+        address _rewardToken,
+        address _nftContract,
         uint256 _apr, // APR rate is 1/1000
         uint256 _usdPerNftRate
     ) {
         // staking pool
         stakingInfo = StakingInfo({
-            rewardToken: _rewardToken,
+            rewardToken: IERC20(_rewardToken),
             apr: _apr,
             usdPerNftRate: _usdPerNftRate,
-            nftContract: _nftContract,
+            nftContract: IERC721(_nftContract),
             startTime: getCurrentTime()
         });
     }
@@ -67,7 +67,7 @@ contract Staking is Ownable, Pausable, ReentrancyGuard {
     // Stake Nft tokens to NftPool
     function enterStaking(uint256 _nftId) public nonReentrant {
         UserInfo storage user = userInfo[msg.sender];
-        stakingInfo.nftContract.safeTransferFrom(
+        stakingInfo.nftContract.transferFrom(
             address(msg.sender),
             address(this),
             _nftId
@@ -81,7 +81,7 @@ contract Staking is Ownable, Pausable, ReentrancyGuard {
     }
 
     // Withdraw All Nft tokens from STAKING.
-    function leaveStaking() public whenNotPaused nonReentrant {
+    function leaveStaking() public whenNotPaused {
         UserInfo storage user = userInfo[msg.sender];
         for (
             uint256 nftIndex = 0;
@@ -111,7 +111,9 @@ contract Staking is Ownable, Pausable, ReentrancyGuard {
             user.rewardHasBeenWithdrawn
         );
         stakingInfo.rewardToken.safeTransfer(msg.sender, amount);
-        require(amount > 0, "Reward Amount: wut?");
+        if (amount == 0) {
+            return 0;
+        }
         user.rewardHasBeenWithdrawn += amount;
         emit ClaimReward(msg.sender, amount);
         return amount;
@@ -141,6 +143,17 @@ contract Staking is Ownable, Pausable, ReentrancyGuard {
         } else {
             stakingInfo.rewardToken.transfer(_to, _amount);
         }
+    }
+
+    function getUserReward(address _userAddress) public view returns (uint256) {
+        UserInfo memory user = userInfo[_userAddress];
+        uint256 amount = calculateRewardDebt(
+            user.startTime,
+            getCurrentTime(),
+            user.nftStaked.length * stakingInfo.usdPerNftRate,
+            user.rewardHasBeenWithdrawn
+        );
+        return amount;
     }
 
     function getCurrentTime() public view returns (uint256) {

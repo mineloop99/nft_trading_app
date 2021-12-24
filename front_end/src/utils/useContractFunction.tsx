@@ -111,16 +111,7 @@ export function usePromiseTransaction(
           submittedAt: Date.now(),
           transactionName: options?.transactionName,
         });
-        if (typeof transaction !== "object") {
-          setState({
-            receipt: undefined,
-            transaction: transaction,
-            status: "Success",
-            transactionName: options?.transactionName,
-            chainId: chainId,
-          });
-          return transaction;
-        } else {
+        if (typeof transaction.wait === "function") {
           const receipt = await transaction.wait();
           setState({
             receipt,
@@ -130,6 +121,14 @@ export function usePromiseTransaction(
             chainId,
           });
           return receipt;
+        } else {
+          setState({
+            receipt: undefined,
+            transaction: transaction,
+            status: "Success",
+            transactionName: options?.transactionName,
+            chainId: chainId,
+          });
         }
       } catch (e: any) {
         const errorMessage =

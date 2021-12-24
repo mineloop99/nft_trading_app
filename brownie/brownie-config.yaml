@@ -13,8 +13,7 @@ networks:
   my-ganache:
     verify: False
   development:
-    verify: True
-    recipient: "0x35Af6B31a61eC9F030849a3953394A69a1f9f9eC"
+    verify: False
   rinkeby:
     verify: True
   kovan:

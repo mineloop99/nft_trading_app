@@ -81,7 +81,7 @@ export const ListForm: React.FC<{
     <>
       <div>
         <div>
-          <h6>TokenId</h6>
+          <h6>Token Id</h6>
           <Input onChange={handleInputTokenIdChange} />
         </div>
         <div>

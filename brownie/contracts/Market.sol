@@ -65,11 +65,12 @@ contract Market {
         return _listings[listingId];
     }
 
-    function getAmoutListing() external view returns (uint256) {
-        return _listingId;
+    function getAmoutListing(uint256 listingId) public view returns (uint256) {
+        return _listings[listingId].price;
     }
 
     function buyToken(uint256 listingId) external payable {
+        require(msg.value == getAmoutListing(listingId), "Check price");
         Listing storage listing = _listings[listingId];
 
         require(msg.sender != listing.seller, "Seller cannot be buyer");

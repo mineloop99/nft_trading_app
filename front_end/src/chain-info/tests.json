@@ -1,18 +1,15 @@
 {
   "contracts": {
-    "Market": "1f209561a56d7614ef8bcb1ddd8ede9237c74347",
-    "Nft": "f3f4c0e6987ace7bce33173b8726cb35b7c2d489",
+    "Market": "b4670a7f4e4da536f8b0b68062eda91a4dfd555f",
+    "Nft": "e607e03399c88110b4c0eaa203b34347c665ffd0",
+    "OpenZeppelin/openzeppelin-contracts@4.3.0/Address": "1ce946f6a4eaa185320328620ccf999b9e86db7c",
+    "OpenZeppelin/openzeppelin-contracts@4.3.0/ERC20": "5c27d7156fdbfe889902cc167df697405a50ad20",
     "OpenZeppelin/openzeppelin-contracts@4.3.0/ERC721": "54651246d3f6853bbc0fe2d3af475b0ea228dbf5",
-    "OpenZeppelin/openzeppelin-contracts@4.3.0/Strings": "1ce946f6a4eaa185320328620ccf999b9e86db7c"
+    "OpenZeppelin/openzeppelin-contracts@4.3.0/SafeERC20": "1ce946f6a4eaa185320328620ccf999b9e86db7c",
+    "OpenZeppelin/openzeppelin-contracts@4.3.0/Strings": "1ce946f6a4eaa185320328620ccf999b9e86db7c",
+    "RewardToken": "1ef7708d5421c6027d455b76504c04561888d2a2",
+    "Staking": "bb7acca61b2389463f27acc1e8fc868e1d67d4f4"
   },
-  "tests": {
-    "tests/test_contract.py": {
-      "coverage": false,
-      "isolated": false,
-      "results": "..",
-      "sha1": "e34ee1b531cedb478054909078b8bab8d849769a",
-      "txhash": []
-    }
-  },
+  "tests": {},
   "tx": {}
 }

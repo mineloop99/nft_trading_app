@@ -52,12 +52,19 @@ export const useListToken = (nftContractAddress: string) => {
     ) {
       await approveNftSend(marketAddress, "true");
     }
-    setPriceToList([tokenId, price]);
+    if (
+      (approveAndListNftState.status === "Success" &&
+        !approveAndListNftState.transaction) ||
+      (checkApprovalState.status === "Success" &&
+        checkApprovalState.transaction)
+    ) {
+      setPriceToList([tokenId, price]);
+    }
   };
   //useEffect
   useEffect(() => {
     listTokenSend(nftContractAddress, priceToList[0], priceToList[1]);
-  }, [priceToList]);
+  }, [priceToList, nftContractAddress]);
 
   const [state, setState] = useState(approveAndListNftState);
 

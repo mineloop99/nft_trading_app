@@ -1,5 +1,5 @@
 import { utils } from "ethers";
-import { useNftShow } from "../../../hooks/market/useNftShow";
+import { useNftShow } from "../../../hooks";
 import { useEthers } from "../../../utils";
 
 const openseaUrl =
@@ -34,11 +34,17 @@ export const NftShow: React.FC<{
                 (tokenId === null ? "Undefined" : String(tokenId))}
             </h3>
           </div>
-          <a href={openseaUrlCombine}>All Token</a>
+          <a href={openseaUrlCombine} target="_blank" rel="noreferrer">
+            All Token
+          </a>
           <br />
-          <a href={openseaPersonalUrlCombine}>Your Token</a>
+          <a href={openseaPersonalUrlCombine} target="_blank" rel="noreferrer">
+            Your Token
+          </a>
           <br />
-          <a href={openseaContractlUrlCombine}>Listed Token</a>
+          <a href={openseaContractlUrlCombine} target="_blank" rel="noreferrer">
+            Listed Token
+          </a>
           <br />
         </>
       )}

@@ -7,30 +7,24 @@ import shutil
 
 def deploy_nft(account):
     nft = Nft.deploy(
-        {
-            "from": account,
-            "publish_sources": config["networks"][network.show_active()]["verify"],
-        }
+        {"from": account},
+        publish_source=config["networks"][network.show_active()]["verify"],
     )
     return nft
 
 
 def deploy_market(account):
     market = Market.deploy(
-        {
-            "from": account,
-            "publish_sources": config["networks"][network.show_active()]["verify"],
-        }
+        {"from": account},
+        publish_source=config["networks"][network.show_active()]["verify"],
     )
     return market
 
 
 def deploy_reward_token(account):
     reward_token = RewardToken.deploy(
-        {
-            "from": account,
-            "publish_sources": config["networks"][network.show_active()]["verify"],
-        }
+        {"from": account},
+        publish_source=config["networks"][network.show_active()]["verify"],
     )
     return reward_token
 
@@ -41,10 +35,8 @@ def deploy_staking(_rewardToken, _nftContract, _apr, _usdPerNftRate, account):
         _nftContract,
         _apr,
         _usdPerNftRate,
-        {
-            "from": account,
-            "publish_sources": config["networks"][network.show_active()]["verify"],
-        },
+        {"from": account},
+        publish_source=config["networks"][network.show_active()]["verify"],
     )
     return staking
 
