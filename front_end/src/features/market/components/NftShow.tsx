@@ -30,9 +30,8 @@ export const NftShow: React.FC<{
         <>
           <div>
             <h3>
-              {"Latest Token ID Minted: " + String(tokenId) === null
-                ? "Undefined"
-                : String(tokenId)}
+              {"Latest Token ID Minted: " +
+                (tokenId === null ? "Undefined" : String(tokenId))}
             </h3>
           </div>
           <a href={openseaUrlCombine}>All Token</a>

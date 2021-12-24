@@ -1,18 +1,19 @@
 {
-  "1337": {
-    "Market": [
-      "0xff322315bCba585ae58678788Fa47b9E53e641eA"
-    ],
-    "Nft": [
-      "0x461932D0CeC6941eF903614766dd7cFa9d39A7d1"
-    ]
-  },
   "4": {
     "Market": [
-      "0x6F872d631B7FA7cc52b769C510e9799F01e5D8bC"
+      "0x0E2eFb7bECd2B3dD386142E874Fb7F6A7435cc37",
+      "0x6CBA53b91cB9c463ba43d4e360F997590eba6695"
     ],
     "Nft": [
-      "0xd88dB22C889B195fb6Cb6D75AfF0986964045D1C"
+      "0xfb2e5c74B65aDA34acd30FE357FB85B1175A90B5",
+      "0x61AefE57135f4E56A6Da8E3F42DF774715c43648"
+    ],
+    "RewardToken": [
+      "0x736405e3Cd5C3796f4182b19d41EdA3714b4ca0d",
+      "0x818aA32F3613d0922dd4263956dD5860aD17B0b7"
+    ],
+    "Staking": [
+      "0xBEC147A40D986dc36bD343e35DC62e0cbb4871e6"
     ]
   }
 }
